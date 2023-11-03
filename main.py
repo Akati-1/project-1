@@ -1,0 +1,12 @@
+from kivy.app import App 
+from kivy.uix.label import Label
+
+class MyApp(App):
+	def build(self):
+		self.icon = "icon.png"
+		self.title = "David"
+		return Label(text="HELLO")
+
+if __name__ == "__main__":
+	app = MyApp()
+	app.run()
