@@ -1,0 +1,127 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "gpuType": "T4",
+      "authorship_tag": "ABX9TyP8CTj7ea3JIjl2xXtBSsxm",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "accelerator": "GPU"
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Akati-1/project-1/blob/main/YOLOv5_1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git clone https://github.com/ultralytics/yolov5\n",
+        "%cd yolov5\n",
+        "%pip install -qr requirements.txt\n",
+        "\n",
+        "import torch\n",
+        "from IPython.display import Image, clear_output\n",
+        "\n",
+        "clear_output()"
+      ],
+      "metadata": {
+        "id": "zAvvJqRL2rkM"
+      },
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "%cd yolov5"
+      ],
+      "metadata": {
+        "id": "ETGDo-xY8PHH"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!unzip -q ../train_data_1.zip -d ../"
+      ],
+      "metadata": {
+        "id": "ruYMgqdh2siI"
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!python train.py --img 1920 --batch 2 --epochs 20 --data custom_data.yaml --weights yolov5s.pt --nosave --cache"
+      ],
+      "metadata": {
+        "id": "iIiUbKFm2sks"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!python detect.py --weights runs/train/exp2/weights/last.pt --img 1920 --conf 0.25 --source ../img_1.jpg"
+      ],
+      "metadata": {
+        "id": "_EFRLJGE2sn9"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!python detect.py --weights runs/train/exp2/weights/last.pt --img 1920 --conf 0.25 --source ../img_2.jpg"
+      ],
+      "metadata": {
+        "id": "W4iLUP4d2sqU"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!python detect.py --weights runs/train/exp2/weights/last.pt --img 1920 --conf 0.25 --source ../img_3.jpg"
+      ],
+      "metadata": {
+        "id": "QAbBPDZ62_-4"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!python detect.py --weights runs/train/exp2/weights/last.pt --img 1920 --conf 0.25 --source ../video.mp4"
+      ],
+      "metadata": {
+        "id": "oUIK2Uni3AG4"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
